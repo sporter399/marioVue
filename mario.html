@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        #pyramid {
+            line-height: 0;
+            font-size: 30px;
+        }
+
+        body {
+            font-family: "Courier New", monospace;
+            text-align: center;
+        }
+
+        .invalid-field {
+            border: 1px solid red;
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <main>
+        <div>
+            <h1>Mario 5</h1>
+
+            <p>When you say</p>
+            <p><strong>Draw a pyramid</strong></p>
+            <p>I say:</p>
+            <br>
+
+            <form id="draw-form">
+                <label>
+                    How high?
+                    <!--
+                        TODO 3 add a v-model directive to the input,
+                        so that Vue will store it for us as 'heightStr'.
+                    -->
+                    <input type="text" v-model="heightStr" id ="height" :class="error ? 'invalid-field': null" />
+                    <label class="error-message">
+                       {{ error }}
+                    </label>
+                </label>
+                <br><br>
+                <input
+                    type="submit"
+                    value="Draw a pyramid"
+                    @click="clearAndRedraw"
+                />
+            </form>
+
+            <br><br>
+
+            <div id="pyramid">
+                
+                
+                <!--
+                TODO 6: Add some Vue.js code right here.
+                You'll want to use v-for="row in rows"
+                and make a <p> for each one.
+                -->
+                <p v-for="row in rows" > {{ row.rows }}</p>
+            
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="mario.js"></script>
+</body>
+</html>
